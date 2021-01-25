@@ -1,0 +1,52 @@
+// Put your styles in this file.
+// Note: "@import" rules aren’t supported.
+
+/*******************************************************************/
+/* Category Banner */
+/*******************************************************************/
+
+.categorybanner .categorybanner_item {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.categorybanner .categorybanner_item .categorybanner_title {
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    z-index: 2;
+}
+
+.categorybanner .categorybanner_item .categorybanner_title h6 {
+    position: relative;
+}
+
+.categorybanner .categorybanner_item .categorybanner_title.text-left {
+    left: 5%;
+}
+
+.categorybanner .categorybanner_item .categorybanner_image:before {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: scale(0);
+    transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    width: 100%;
+    z-index: 1;
+}
+
+.categorybanner .categorybanner_item:hover .categorybanner_image:before {
+    transform: scale(1);
+}

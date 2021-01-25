@@ -1,0 +1,17 @@
+{
+  "current": {
+    "sections": {
+      "home-banner": {
+        "type": "home-banner",
+        "settings": {
+          "title": "My awesome shop",
+          "subtitle": "Awesome description"
+        }
+      }
+    },
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {}
+  }
+}

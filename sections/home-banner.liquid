@@ -1,0 +1,27 @@
+<div class="container pt-5">
+<!-- For Demo Purpose-->
+  <header class="text-center mb-5">
+    <h1 class="display-4 font-weight-bold">{{ section.settings.title }}</h1>
+    <p class="font-italic text-muted mb-0">{{ section.settings.subtitle }}</p>
+</header>
+</div>
+
+{% schema %}
+{
+    "name": "Banner Home",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "title of the content",
+            "default": "Hi, this is my shop"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "title of the content",
+            "default": "Awesome description"
+        }
+    ]
+}
+{% endschema %}

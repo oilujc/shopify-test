@@ -1,0 +1,66 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+<div class="container py-5">
+  <div class="content-wrapper">
+    <div class="item-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}"
+                    class="img-fluid">
+                </div>
+                <div class="col-sm-6 col-md-5 d-md-flex flex-column justify-content-between">
+                  {% for image in product.images %}
+                  <a id="item-{{ forloop.index }}" class="service-{{ forloop.index }}-item"
+                    href="{{ image.src | img_url: 'large' }}">
+                    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-7">
+            <div class="product-title">
+              <h1>{{ product.title }}</h1>
+            </div>
+            <div class="product-desc"> {{ product.description }}</div>
+            <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i
+                class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+            <hr>
+            <div class="product-price">
+              {{ current_variant.price | money }}</div>
+            <div class="product-stock">In Stock</div>
+            <hr>
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+              <div class="form-group mb-2">
+                <select name="id" id="productSelect" class="form-select">
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+                      <option value="{{ variant.id }}">
+                        {{ variant.title }} - {{ variant.price | money_with_currency }}
+                      </option>
+                    {% else %}
+                      <option disabled="disabled">
+                        {{ variant.title }} - sold out
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-inline mb-2">
+                <label for="Quantity" class="form-label">Quantity</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="form-control">
+              </div>
+              <button type="submit" name="add" id="AddToCart" class="btn btn-success">Add to cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
